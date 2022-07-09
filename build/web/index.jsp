@@ -4,25 +4,17 @@
     Author     : Desarrollo2
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%
-    String Seccion = request.getParameter("Seccion");
-    String PaginaSeccion = "MenuP.jsp";
-    int AbrirSesion = 0;
-%>
 <html lang="es">
+    <%@include file="header.jsp" %>    
 
-    <%@include file="header.jsp" %>
-    <style>
-        .sidebar-item{
-            font-size: 120%;
-        }
-
-
-    </style>
-    <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" class="" onresize >
+    <%
+        String Seccion = request.getParameter("Seccion");
+        String PaginaSeccion = "MenuP.jsp";
+        int AbrirSesion = 0;
+    %>
+    <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky">
         <div class="wrapper">
             <nav id="sidebar" class="sidebar">
                 <div class="sidebar-content js-simplebar">
@@ -34,10 +26,18 @@
                         <li class="sidebar-header">
                             <h3 style="color: red">PRINCIPAL</h3>
                         </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=2"><i class="fa fa-graduation-cap turquoise_color"></i><span class="align-middle">CITAS</span></a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=1"><i class="fa fa-graduation-cap turquoise_color"></i><span class="align-middle">PROGRAMACIÓN DE TURNOS</span></a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="menuMaestros.jsp"><i class="fa fa-graduation-cap turquoise_color"></i><span class="align-middle">Mantenimiento</span></a></li>
-                        
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=2"><i class="fa-regular fa-calendar-days turquoise_color"></i><span class="align-middle">CITAS</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=1"><i class="fa-solid fa-user-doctor yellow_color"></i><span class="align-middle">PROGRAMACIÓN DE TURNOS</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=3"><i class="fa-solid fa-person-circle-plus brown_color"></i><span class="align-middle">ADMINISION</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=4"><i class="fa-solid fa-house-medical-flag orange_color"></i><span class="align-middle">CONSULTA AMBULATORIA</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=5"><i class="fa-solid fa-percent green_color"></i><span class="align-middle">DESCUENTO DE COBRO</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=6"><i class="fa-solid fa-file-medical blue1_color"></i><span class="align-middle">INGRESO/SALIDA HISTORIAS</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=7"><i class="fa-solid fa-square-parking purple_color"></i><span class="align-middle">PARAMETROS</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=8"><i class="fa-solid fa-cash-register turquoise_color"></i><span class="align-middle">FLUJO DE CAJA</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=9"><i class="fa-solid fa-handshake orange_color"></i><span class="align-middle">CUENTAS CORRIENTES</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=10"><i class="fa-solid fa-chart-column"></i><span class="align-middle">DATAMINING</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="menuMaestros.jsp"><i class="fa-solid fa-gears red_color"></i><span class="align-middle">MANTENIMIENTO</span></a></li>
+
 
                     </ul>
 
@@ -45,7 +45,7 @@
 
                     <%
                         if (Seccion == null) {
-                            Seccion = "";
+                            Seccion = " ";
                         }
                         switch (Seccion) {
                             case "1":
@@ -53,6 +53,9 @@
                                 break;
                             case "2":
                                 PaginaSeccion = "Vistas_Principal/Citas.jsp";
+                                break;
+                             case "4":
+                                PaginaSeccion = "Vistas_Principal/ConsultaAmbulatoria.jsp";
                                 break;
                             default:
                                 PaginaSeccion = "MenuP.jsp";
@@ -67,7 +70,7 @@
                         <i class="hamburger align-self-center"></i>
                     </a>
 
-                    
+
 
 
                     <div class="navbar-collapse collapse">
@@ -101,5 +104,5 @@
     </body>
 
 
-    <!-- Mirrored from appstack.bootlab.io/dashboard-default.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jun 2022 14:46:51 GMT -->
+
 </html>

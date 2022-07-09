@@ -48,6 +48,48 @@ public class DAOfcitas {
         return DatosCita;
     }
 
+    public List VerCitas(fcitas datosCita, fmedicos DatoMed, fservicios DatosServicio) throws SQLException {
+        ArrayList<fcitas> DatosCita = new ArrayList<>();        
+        PreparedStatement ps;
+        ps = Conexion.prepareStatement("SELECT\n"
+                + "    fpaciente.Nombre,\n"
+                + "    fconsultorios.Descripcion,    \n"
+                + "    fcitas.Estado,\n"
+                + "    fcitas.HoraAtencion,    \n"
+                + "    fcitas.FechaAtencion,\n"
+                + "    fcitas.Observaciones,\n"
+                + "    turno.Tiempo,\n"
+                + "    turno.Hora_I,\n"
+                + "    turno.Horal_F\n"
+                + "FROM\n"
+                + "    fcitas\n"
+                + "INNER JOIN fhistoria_c ON fcitas.id_Historia = fhistoria_c.id_Historia\n"
+                + "INNER JOIN fpaciente ON fhistoria_c.Id_Paciente = fpaciente.Id_Paciente\n"
+                + "INNER JOIN turno ON fcitas.Id_Turno = turno.Id_Turno\n"
+                + "INNER JOIN fconsultorios ON turno.Id_Consultorios = fconsultorios.Id_Consultorios\n"
+                + "INNER JOIN fmedicos on turno.Id_Medico = fmedicos.Id_Medico\n"
+                + "INNER JOIN detalleespecialidad on fmedicos.Id_Medico = detalleespecialidad.Id_Medico\n"
+                + "where fcitas.Estado = 'A' and detalleespecialidad.id_servicio = ? and turno.Id_Medico = ? and fcitas.FechaAtencion= ? ");
+        ps.setInt(1, DatosServicio.getId_servicio());
+        ps.setInt(2, DatoMed.getId_Medico());
+        ps.setString(3, datosCita.getFechaAtencion());
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            fcitas citas = new fcitas();
+            citas.setPaciente(rs.getString(1));
+            citas.setConsultorio(rs.getString(2));
+            citas.setEstado(rs.getString(3));
+            citas.setHoraAtencion(rs.getString(4));
+            citas.setFechaAtencion(rs.getString(5));
+            citas.setObservaciones(rs.getString(6));
+            citas.setTiempo(rs.getString(7));
+            citas.setHoraI(rs.getString(8));          
+            citas.setHoraf(rs.getString(9));
+            DatosCita.add(citas);
+        }
+        return DatosCita;
+    }
+
     public boolean RegistrarCita(fcitas DatoCita) throws SQLException {
 
         PreparedStatement ps = Conexion.prepareStatement("INSERT INTO camiones(Placa, Marca, Certificado, Config_Vehicular, Carga_Max, Estado) VALUES (?,?,?,?,?,1)");

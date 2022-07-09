@@ -53,6 +53,7 @@ public class fmedicosServlet extends HttpServlet {
                     Iterator<fmedicos> IteradorMedico = DatosMedico.iterator();
                     Iterator<fmedicos> IteradorMedico2 = DatosMedico.iterator();
                     fmedicos MedicoDato = null;
+                    response.setCharacterEncoding("UTF-8");
                       response.getWriter().write("[");
                     while (IteradorMedico.hasNext()) {
                         aux++;
@@ -71,10 +72,13 @@ public class fmedicosServlet extends HttpServlet {
                         }
                         aux2++;
                         
+                        
                         response.getWriter().write(JSON);
                     }
                        response.getWriter().write("]");
+                       
                     break;
+                
                 default:
                     throw new AssertionError();
             }

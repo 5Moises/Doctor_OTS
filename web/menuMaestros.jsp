@@ -14,14 +14,7 @@
 %>
 <html>
 
-    <%@include file="header.jsp" %>
-    <style>
-        .sidebar-item{
-            font-size: 130%;         
-        }
-                
-
-    </style>
+    <%@include file="header.jsp" %>    
     <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" class="" onresize >
         <div class="wrapper">
             <nav id="sidebar" class="sidebar">

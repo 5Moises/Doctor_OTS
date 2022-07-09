@@ -58,7 +58,7 @@
 
                                 %>
                                 <tr>                                    
-                                    <td><%=PacientesDato.getNroHistoria()%></td>                                  
+                                    <td><%=PacientesDato.getDOCI()%></td>                                  
                                      <td><%=PacientesDato.getNombre()%></td>
                                      <td><%=PacientesDato.getEdad()%></td>
                                      <td><%=PacientesDato.getSexo()%></td>
