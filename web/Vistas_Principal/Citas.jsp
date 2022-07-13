@@ -328,324 +328,323 @@
                     </div><!-- comment -->  
                 </div>
             </div>
+        </div>
+    </div>
+</main>
+<script>
+    //Bucar medico por especialidad
+    function buscaMedico() {
+        const medico = document.querySelector('#Medicotxt');
+        var id_Especialidad = document.getElementById("Especialidadtxt").value;
+        $.post("fmedicosServlet", {"id_Especialidad": id_Especialidad, "Consulta": "BuscaMedico"}, function (response) {
+            var datos = JSON.parse(response);
 
-            </main>
+            for (var i = 0; i < datos.length; i++) {
+                const op = document.createElement("option");
+                op.value = datos[i].Id_Medico;
+                const text = document.createTextNode(datos[i].nombre);
+                op.appendChild(text);
+                medico.appendChild(op);
+            }
 
+        });
+    }
+    function BuscaHorario()
+    {
+        var medico1 = document.getElementById("Medicotxt").value;
+        var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
+        if (medico1 === "")
+        {
+            alert("Seleccione Medico");
+        } else
+        {
+            var fecha = document.getElementById("Fechatxt").value;
 
-            <script>
-                //Bucar medico por especialidad
-                function buscaMedico() {
-                    const medico = document.querySelector('#Medicotxt');
-                    var id_Especialidad = document.getElementById("Especialidadtxt").value;
-                    $.post("fmedicosServlet", {"id_Especialidad": id_Especialidad, "Consulta": "BuscaMedico"}, function (response) {
-                        var datos = JSON.parse(response);
+            $.post("fcitasServlet", {"Fecha": fecha, "id_servicio": id_Especialidad1, "Id_medico": medico1, "Consulta": "ConsultaCita"}, function (response) {
 
-                        for (var i = 0; i < datos.length; i++) {
-                            const op = document.createElement("option");
-                            op.value = datos[i].Id_Medico;
-                            const text = document.createTextNode(datos[i].nombre);
-                            op.appendChild(text);
-                            medico.appendChild(op);
-                        }
-
-                    });
-                }
-                function BuscaHorario()
+                if (response !== "")
                 {
-                    var medico1 = document.getElementById("Medicotxt").value;
-                    var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
-                    if (medico1 === "")
-                    {
-                        alert("Seleccione Medico");
-                    } else
-                    {
-                        var fecha = document.getElementById("Fechatxt").value;
-                        
-                        $.post("fcitasServlet", {"Fecha": fecha, "id_servicio": id_Especialidad1, "Id_medico": medico1, "Consulta": "ConsultaCita"}, function (response) {
+                    var datos = JSON.parse(response);
+                    //$('#Duraciontxt').val(datos[1].Tiempo + "Minutos");
+                    var aux = "[";
+                    var aux2 = "]";
+                    //Calendario
 
-                            if (response !== "")
-                            {
-                                var datos = JSON.parse(response);
-                               //$('#Duraciontxt').val(datos[1].Tiempo + "Minutos");
-                                var aux = "[";
-                                var aux2 = "]";
-                                //Calendario
-
-                                var calendarEl = document.getElementById('calendar');
-                                var initialLocaleCode = 'es';
-                                for (var i = 0; i < datos.length; i++) {
-                                    var jsonTexto = '{"title":"' + datos[i].Paciente + '","start": "' + datos[i].Fecha + 'T' + datos[i].HoraA + '","end":"' + datos[i].Fecha + 'T' + datos[i].HoraF + ':00"}';
-                                    if (i < datos.length - 1)
-                                    {
-                                        jsonTexto = jsonTexto + ',';
-                                        aux = aux + jsonTexto;
-                                    } else
-                                    {
-                                        aux = aux + jsonTexto;
-                                    }
-                                }
-                                aux = aux + aux2;
-                                var coche = JSON.parse(aux);
-                                var calendar = new FullCalendar.Calendar(calendarEl, {
-                                    headerToolbar: {
-                                        left: 'prev,next today',
-                                        center: 'title',
-                                        right: 'timeGridDay,dayGridMonth,timeGridWeek,listDay'
-                                    },
-                                    locale: initialLocaleCode,
-
-                                    navLinks: true, // can click day/week names to navigate views
-                                    selectable: true,
-                                    selectMirror: true,
-                                    select: function () {
-                                        //var title = prompt('Event Title:');                                 
-                                        $('#Registro_Horario').modal('show');
-                                        $(document).on('shown.bs.modal', '#Registro_Horario', function ()
-                                        {
-                                            var medico1 = document.getElementById("Medicotxt").value;
-                                            //var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
-                                            var texto = $("#Medicotxt").find('option:selected').text();
-                                            $('#txtModalDNI').focus();
-                                            document.getElementById('txtModalDoctor').innerHTML = texto;                                            
-                                    
-                                        });
-
-                                        /* if (title) {
-                                         calendar.addEvent({
-                                         title: title,
-                                         start: arg.start,
-                                         end: arg.end,
-                                         allDay: arg.allDay
-                                         })
-                                         }*/
-                                        //    ,
-                                    },
-                                    eventClick: function (arg) {
-                                        if (confirm('Are you sure you want to delete this event?')) {
-                                            arg.event.remove();
-                                        }
-                                    },
-                                    editable: true,
-                                    dayMaxEvents: true, // allow "more" link when too many events
-                                    events: coche
-                                });
-                                calendar.render();
-                                //FIncalendario
-                            }
-
-
-                        });
-                    }
-                }
-            </script>
-            <!-- CALENDARIO PRINCIPAL -->
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
                     var calendarEl = document.getElementById('calendar');
                     var initialLocaleCode = 'es';
+                    for (var i = 0; i < datos.length; i++) {
+                        var jsonTexto = '{"title":"' + datos[i].Paciente + '","start": "' + datos[i].Fecha + 'T' + datos[i].HoraA + '","end":"' + datos[i].Fecha + 'T' + datos[i].HoraF + ':00"}';
+                        if (i < datos.length - 1)
+                        {
+                            jsonTexto = jsonTexto + ',';
+                            aux = aux + jsonTexto;
+                        } else
+                        {
+                            aux = aux + jsonTexto;
+                        }
+                    }
+                    aux = aux + aux2;
+                    var coche = JSON.parse(aux);
                     var calendar = new FullCalendar.Calendar(calendarEl, {
                         headerToolbar: {
                             left: 'prev,next today',
                             center: 'title',
                             right: 'timeGridDay,dayGridMonth,timeGridWeek,listDay'
                         },
-                        locale: initialLocaleCode
+                        locale: initialLocaleCode,
+
+                        navLinks: true, // can click day/week names to navigate views
+                        selectable: true,
+                        selectMirror: true,
+                        select: function () {
+                            //var title = prompt('Event Title:');                                 
+                            $('#Registro_Horario').modal('show');
+                            $(document).on('shown.bs.modal', '#Registro_Horario', function ()
+                            {
+                                var medico1 = document.getElementById("Medicotxt").value;
+                                //var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
+                                var texto = $("#Medicotxt").find('option:selected').text();
+                                $('#txtModalDNI').focus();
+                                document.getElementById('txtModalDoctor').innerHTML = texto;
+
+                            });
+
+                            /* if (title) {
+                             calendar.addEvent({
+                             title: title,
+                             start: arg.start,
+                             end: arg.end,
+                             allDay: arg.allDay
+                             })
+                             }*/
+                            //    ,
+                        },
+                        eventClick: function (arg) {
+                            if (confirm('Are you sure you want to delete this event?')) {
+                                arg.event.remove();
+                            }
+                        },
+                        editable: true,
+                        dayMaxEvents: true, // allow "more" link when too many events
+                        events: coche
                     });
                     calendar.render();
-                });
-            </script>
-             <!-- Registra CIta -->
-            <script>
-                function RegistraCita()
-                {
-                    var txtModalDNI = document.getElementById("txtModalDNI").value;
-                    var txtModalNombrePaciente = document.getElementById("txtModalNombrePaciente").value;
-                    var txtModalHora = document.getElementById("txtModalHora").value;
-                    var idDescripcion = document.getElementById("idDescripcion").value;
-           
-                    
-                    $.post("fcitasServlet", { "txtModalDNI": txtModalDNI, "txtModalNombrePaciente": txtModalNombrePaciente, "txtModalHora": txtModalHora, "idDescripcion": idDescripcion, "Consulta": "ResgistraCita"}, function () {
-
-                        swal
-                                ({
-                                    title: "Cita Registrado!",
-                                    icon: "success",
-                                    text: " ",
-                                    buttons: [true],
-                                    timer: 500
-                                })
-                                .then(() => {
-                                    $("#Registro_Horario").modal('hide');
-                                });
-                    });
-
+                    //FIncalendario
                 }
-            </script>
-            <!-- MODALDEUSUARIOS  -->  
-            <script type="text/javascript">
-                let DNI = document.getElementById("txtModalDNI");
 
-                DNI.addEventListener('keyup', (e) => {
-                    if (e.keyCode === 13)
-                    {
-                        $.post("fcitasServlet", {"DNI": e.target.value, "Consulta": "BuscaDNI"}, function (response) {
 
-                            var datos = JSON.parse(response);
-                            $("#txtModalNombrePaciente").val(datos.nombre);
-                            if (datos.Nuevo === "SI")
-                            {
+            });
+        }
+    }
+</script>
+<!-- CALENDARIO PRINCIPAL -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var initialLocaleCode = 'es';
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'timeGridDay,dayGridMonth,timeGridWeek,listDay'
+            },
+            locale: initialLocaleCode
+        });
+        calendar.render();
+    });
+</script>
+<!-- Registra CIta -->
+<script>
+    function RegistraCita()
+    {
+        var txtModalDNI = document.getElementById("txtModalDNI").value;
+        var txtModalNombrePaciente = document.getElementById("txtModalNombrePaciente").value;
+        var txtModalHora = document.getElementById("txtModalHora").value;
+        var idDescripcion = document.getElementById("idDescripcion").value;
 
-                                swal
-                                        ({
-                                            title: "SE NECESITA ACTUALIZAR LOS DATOS",
-                                            icon: "warning",
-                                            text: " ",
-                                            buttons: [true],
-                                            timer: 1000
-                                        })
-                                        .then(() => {
-                                            $('#Registro_Usuario').modal('show');
-                                            $("#NombreCompleto").val(datos.nombre);
-                                            var DOCDNI = document.getElementById("txtModalDNI").value;
-                                            $("#DNItxt").val(DOCDNI);
 
-                                            $(document).on('shown.bs.modal', '#Registro_Usuario', function ()
-                                            {
-                                                $('#NombreCompleto').focus();
+        $.post("fcitasServlet", {"txtModalDNI": txtModalDNI, "txtModalNombrePaciente": txtModalNombrePaciente, "txtModalHora": txtModalHora, "idDescripcion": idDescripcion, "Consulta": "ResgistraCita"}, function () {
 
-                                                var ValidaPais = document.getElementById("Pais").value;
-                                                var ValidaO = document.getElementById("Ocupacion").value;
-                                                var EstadoC = document.getElementById("EstadoC").value;
-                                                var GrandoI = document.getElementById("GrandoI").value;
-                                                if (ValidaPais === "0")
-                                                {
-                                                    $.post("fpacienteServlet", {"Consulta": "MostrarPaises"}, function (response) {
-                                                        var datos = JSON.parse(response);
-                                                        const Paises = document.querySelector('#Pais');
-                                                        for (var i = 0; i < datos.length; i++) {
-                                                            const op = document.createElement("option");
-                                                            op.value = datos[i].id_pais;
-                                                            const text = document.createTextNode(datos[i].Pais);
-                                                            op.appendChild(text);
-                                                            Paises.appendChild(op);
-                                                        }
-                                                    });
-                                                }
-                                                if (ValidaO === "0")
-                                                {
-                                                    $.post("fpacienteServlet", {"Consulta": "MostrarOcupacion"}, function (response) {
-                                                        var datos = JSON.parse(response);
-                                                        const Ocupacion = document.querySelector('#Ocupacion');
-                                                        for (var i = 0; i < datos.length; i++) {
-                                                            const op = document.createElement("option");
-                                                            op.value = datos[i].id_Ocupacion;
-                                                            const text = document.createTextNode(datos[i].Ocupacion);
-                                                            op.appendChild(text);
-                                                            Ocupacion.appendChild(op);
-                                                        }
-                                                    });
-                                                }
-                                                if (EstadoC === "0")
-                                                {
-                                                    $.post("fpacienteServlet", {"Consulta": "MostrarEstadoCivil"}, function (response) {
-                                                        var datos = JSON.parse(response);
-                                                        const EstadoC = document.querySelector('#EstadoC');
-                                                        for (var i = 0; i < datos.length; i++) {
-                                                            const op = document.createElement("option");
-                                                            op.value = datos[i].id_EstadoC;
-                                                            const text = document.createTextNode(datos[i].EstadoC);
-                                                            op.appendChild(text);
-                                                            EstadoC.appendChild(op);
-                                                        }
-                                                    });
-                                                }
-                                                if (GrandoI === "0")
-                                                {
-                                                    $.post("fpacienteServlet", {"Consulta": "MostrarGradoInstruccion"}, function (response) {
-                                                        var datos = JSON.parse(response);
-                                                        const GrandoI = document.querySelector('#GrandoI');
-                                                        for (var i = 0; i < datos.length; i++) {
-                                                            const op = document.createElement("option");
-                                                            op.value = datos[i].id_GradoI;
-                                                            const text = document.createTextNode(datos[i].GradoI);
-                                                            op.appendChild(text);
-                                                            GrandoI.appendChild(op);
-                                                        }
-                                                    });
-                                                }
-                                            });
+            swal
+                    ({
+                        title: "Cita Registrado!",
+                        icon: "success",
+                        text: " ",
+                        buttons: [true],
+                        timer: 500
+                    })
+                    .then(() => {
+                        $("#Registro_Horario").modal('hide');
+                    });
+        });
+
+    }
+</script>
+<!-- MODALDEUSUARIOS  -->  
+<script type="text/javascript">
+    let DNI = document.getElementById("txtModalDNI");
+
+    DNI.addEventListener('keyup', (e) => {
+        if (e.keyCode === 13)
+        {
+            $.post("fcitasServlet", {"DNI": e.target.value, "Consulta": "BuscaDNI"}, function (response) {
+
+                var datos = JSON.parse(response);
+                $("#txtModalNombrePaciente").val(datos.nombre);
+                if (datos.Nuevo === "SI")
+                {
+
+                    swal
+                            ({
+                                title: "SE NECESITA ACTUALIZAR LOS DATOS",
+                                icon: "warning",
+                                text: " ",
+                                buttons: [true],
+                                timer: 1000
+                            })
+                            .then(() => {
+                                $('#Registro_Usuario').modal('show');
+                                $("#NombreCompleto").val(datos.nombre);
+                                var DOCDNI = document.getElementById("txtModalDNI").value;
+                                $("#DNItxt").val(DOCDNI);
+
+                                $(document).on('shown.bs.modal', '#Registro_Usuario', function ()
+                                {
+                                    $('#NombreCompleto').focus();
+
+                                    var ValidaPais = document.getElementById("Pais").value;
+                                    var ValidaO = document.getElementById("Ocupacion").value;
+                                    var EstadoC = document.getElementById("EstadoC").value;
+                                    var GrandoI = document.getElementById("GrandoI").value;
+                                    if (ValidaPais === "0")
+                                    {
+                                        $.post("fpacienteServlet", {"Consulta": "MostrarPaises"}, function (response) {
+                                            var datos = JSON.parse(response);
+                                            const Paises = document.querySelector('#Pais');
+                                            for (var i = 0; i < datos.length; i++) {
+                                                const op = document.createElement("option");
+                                                op.value = datos[i].id_pais;
+                                                const text = document.createTextNode(datos[i].Pais);
+                                                op.appendChild(text);
+                                                Paises.appendChild(op);
+                                            }
                                         });
-                            }
-
-                        });
-                    }
-                });
-            </script>
-            <!-- RegistroUsuarios  -->  
-            <script>
-                function Casotitular()
-                {
-                    var Parentesco = document.getElementById("Parentesco").value;
-                    var NombreC = document.getElementById("NombreCompleto").value;
-                    var Documento = document.getElementById("DNItxt").value;
-                    if (Parentesco === "1")
-                    {
-                        $('#Titular').val(NombreC);
-                        $('#RucPaciente').val(Documento);
-                    } else
-                    {
-                        $('#Titular').val("");
-                        $('#RucPaciente').val("");
-                    }
-                }
-                function FiltroPorPais()
-                {
-                    var id_pais = document.getElementById("Pais").value;
-                    $.post("fpacienteServlet", {"id_pais": id_pais, "Consulta": "MostrarDepartamento"}, function (response) {
-                        var datos = JSON.parse(response);
-                        const Departamento = document.querySelector('#Departamento');
-                        for (var i = 0; i < datos.length; i++) {
-                            const op = document.createElement("option");
-                            op.value = datos[i].id_Departamento;
-                            const text = document.createTextNode(datos[i].Departamento);
-                            op.appendChild(text);
-                            Departamento.appendChild(op);
-                        }
-                    });
-                }
-                function RegistrarP()
-                {
-                    var FechInresotxts = document.getElementById("FechInresotxts").value;
-                    var DNItxt = document.getElementById("DNItxt").value;
-                    var NombreCompleto = document.getElementById("NombreCompleto").value;
-                    var DireccionPaciente = document.getElementById("DireccionPaciente").value;
-                    var FechNaciPaciente = document.getElementById("FechNaciPaciente").value;
-                    var SexoPaciente = document.getElementById("SexoPaciente").value;
-                    var Pais = document.getElementById("Pais").value;
-                    var Departamento = document.getElementById("Departamento").value;
-                    var Telefonotxt = document.getElementById("Telefonotxt").value;
-                    var Email = document.getElementById("Email").value;
-                    var Parentesco = document.getElementById("Parentesco").value;
-                    var RucPaciente = document.getElementById("RucPaciente").value;
-                    var Titular = document.getElementById("Titular").value;
-                    var Ocupacion = document.getElementById("Ocupacion").value;
-                    var EstadoC = document.getElementById("EstadoC").value;
-                    var GrandoI = document.getElementById("GrandoI").value;
-
-                    $.post("fpacienteServlet", {"FechInresotxts": FechInresotxts, "DNItxt": DNItxt, "NombreCompleto": NombreCompleto, "DireccionPaciente": DireccionPaciente, "FechNaciPaciente": FechNaciPaciente, "SexoPaciente": SexoPaciente, "Pais": Pais, "Departamento": Departamento, "Telefonotxt": Telefonotxt, "Email": Email, "Parentesco": Parentesco, "RucPaciente": RucPaciente, "Titular": Titular, "Ocupacion": Ocupacion, "EstadoC": EstadoC, "GrandoI": GrandoI, "TipoDoc": "DNI", "Consulta": "ResgistraP"}, function () {
-
-                        swal
-                                ({
-                                    title: "Paciente Registrado!",
-                                    icon: "success",
-                                    text: " ",
-                                    buttons: [true],
-                                    timer: 500
-                                })
-                                .then(() => {
-                                    $("#Registro_Usuario").modal('hide');
+                                    }
+                                    if (ValidaO === "0")
+                                    {
+                                        $.post("fpacienteServlet", {"Consulta": "MostrarOcupacion"}, function (response) {
+                                            var datos = JSON.parse(response);
+                                            const Ocupacion = document.querySelector('#Ocupacion');
+                                            for (var i = 0; i < datos.length; i++) {
+                                                const op = document.createElement("option");
+                                                op.value = datos[i].id_Ocupacion;
+                                                const text = document.createTextNode(datos[i].Ocupacion);
+                                                op.appendChild(text);
+                                                Ocupacion.appendChild(op);
+                                            }
+                                        });
+                                    }
+                                    if (EstadoC === "0")
+                                    {
+                                        $.post("fpacienteServlet", {"Consulta": "MostrarEstadoCivil"}, function (response) {
+                                            var datos = JSON.parse(response);
+                                            const EstadoC = document.querySelector('#EstadoC');
+                                            for (var i = 0; i < datos.length; i++) {
+                                                const op = document.createElement("option");
+                                                op.value = datos[i].id_EstadoC;
+                                                const text = document.createTextNode(datos[i].EstadoC);
+                                                op.appendChild(text);
+                                                EstadoC.appendChild(op);
+                                            }
+                                        });
+                                    }
+                                    if (GrandoI === "0")
+                                    {
+                                        $.post("fpacienteServlet", {"Consulta": "MostrarGradoInstruccion"}, function (response) {
+                                            var datos = JSON.parse(response);
+                                            const GrandoI = document.querySelector('#GrandoI');
+                                            for (var i = 0; i < datos.length; i++) {
+                                                const op = document.createElement("option");
+                                                op.value = datos[i].id_GradoI;
+                                                const text = document.createTextNode(datos[i].GradoI);
+                                                op.appendChild(text);
+                                                GrandoI.appendChild(op);
+                                            }
+                                        });
+                                    }
                                 });
-                    });
+                            });
                 }
-            </script>
-           
+
+            });
+        }
+    });
+</script>
+<!-- RegistroUsuarios  -->  
+<script>
+    function Casotitular()
+    {
+        var Parentesco = document.getElementById("Parentesco").value;
+        var NombreC = document.getElementById("NombreCompleto").value;
+        var Documento = document.getElementById("DNItxt").value;
+        if (Parentesco === "1")
+        {
+            $('#Titular').val(NombreC);
+            $('#RucPaciente').val(Documento);
+        } else
+        {
+            $('#Titular').val("");
+            $('#RucPaciente').val("");
+        }
+    }
+    function FiltroPorPais()
+    {
+        var id_pais = document.getElementById("Pais").value;
+        $.post("fpacienteServlet", {"id_pais": id_pais, "Consulta": "MostrarDepartamento"}, function (response) {
+            var datos = JSON.parse(response);
+            const Departamento = document.querySelector('#Departamento');
+            for (var i = 0; i < datos.length; i++) {
+                const op = document.createElement("option");
+                op.value = datos[i].id_Departamento;
+                const text = document.createTextNode(datos[i].Departamento);
+                op.appendChild(text);
+                Departamento.appendChild(op);
+            }
+        });
+    }
+    function RegistrarP()
+    {
+        var FechInresotxts = document.getElementById("FechInresotxts").value;
+        var DNItxt = document.getElementById("DNItxt").value;
+        var NombreCompleto = document.getElementById("NombreCompleto").value;
+        var DireccionPaciente = document.getElementById("DireccionPaciente").value;
+        var FechNaciPaciente = document.getElementById("FechNaciPaciente").value;
+        var SexoPaciente = document.getElementById("SexoPaciente").value;
+        var Pais = document.getElementById("Pais").value;
+        var Departamento = document.getElementById("Departamento").value;
+        var Telefonotxt = document.getElementById("Telefonotxt").value;
+        var Email = document.getElementById("Email").value;
+        var Parentesco = document.getElementById("Parentesco").value;
+        var RucPaciente = document.getElementById("RucPaciente").value;
+        var Titular = document.getElementById("Titular").value;
+        var Ocupacion = document.getElementById("Ocupacion").value;
+        var EstadoC = document.getElementById("EstadoC").value;
+        var GrandoI = document.getElementById("GrandoI").value;
+
+        $.post("fpacienteServlet", {"FechInresotxts": FechInresotxts, "DNItxt": DNItxt, "NombreCompleto": NombreCompleto, "DireccionPaciente": DireccionPaciente, "FechNaciPaciente": FechNaciPaciente, "SexoPaciente": SexoPaciente, "Pais": Pais, "Departamento": Departamento, "Telefonotxt": Telefonotxt, "Email": Email, "Parentesco": Parentesco, "RucPaciente": RucPaciente, "Titular": Titular, "Ocupacion": Ocupacion, "EstadoC": EstadoC, "GrandoI": GrandoI, "TipoDoc": "DNI", "Consulta": "ResgistraP"}, function () {
+
+            swal
+                    ({
+                        title: "Paciente Registrado!",
+                        icon: "success",
+                        text: " ",
+                        buttons: [true],
+                        timer: 500
+                    })
+                    .then(() => {
+                        $("#Registro_Usuario").modal('hide');
+                    });
+        });
+    }
+</script>
+

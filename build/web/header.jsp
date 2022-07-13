@@ -24,7 +24,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <style>
         .sidebar-item{
-            font-size: 125%;
+            font-size: 120%;
         }
     </style>
 </head>

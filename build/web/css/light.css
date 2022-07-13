@@ -469,7 +469,9 @@ progress{
 .yellow_bg {
     background: #ff9800 !important;
 }
-
+.white_bg {
+    color: #f0f0f0 !important;
+}
 .purple_color2 {
     color: #9c27b0 !important;
 }
@@ -4823,14 +4825,20 @@ textarea.form-control-lg{
         min-height:calc(100% - 3.5rem)
     }
     .modal-sm{
-        max-width:400px
+        max-width:1000px
+    }
+    .modal-dx{
+        max-width: 1000px
     }
 }
 @media(min-width:992px){
     .modal-lg,.modal-xl{
-        max-width:1350px
+        max-width: 100%
     }
 }
+
+    
+
 @media(min-width:1200px){
     .modal-xl{
         max-width:1140px
@@ -12038,10 +12046,10 @@ body[data-theme=dark] .settings-toggle-option:first-child{
     display:block;
     height:100%;
     position:fixed;
-    right:-320px;
+    right:-300px;
     top:0;
     transition:right .2s ease-in-out;
-    width:320px;
+    width:300px;
     z-index:100
 }
 .settings.open .settings-panel:before{
@@ -12168,10 +12176,11 @@ body[data-theme=dark] .settings-toggle-option:first-child{
     opacity:1
 }
 .sidebar{
-      background-image: url('../img/photos/pattern_h.png');
+    background-color: #3CA5F2;
+    background-image: url('../img/photos/pattern_h.png');
     direction:ltr;
-    max-width:320px;
-    min-width:320px;
+    max-width:300px;
+    min-width:300px;
     transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out
 }
 body[data-theme=colored] .sidebar{
@@ -12184,7 +12193,7 @@ body[data-theme=light] .sidebar{
       background-image: url('../img/photos/pattern_h.png');
 }
 .sidebar-content{
-    background:#29304;
+    
     transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out
 }
 body[data-theme=colored] .sidebar-content{
@@ -12194,11 +12203,11 @@ body[data-theme=dark] .sidebar-content{
     background:#293042
 }
 body[data-theme=light] .sidebar-content{
-    background-color: #fff;
-    color: #f2f2f2;
+    background-color: #1421A5;
+    background-image: url('../img/photos/pattern_h.png');
     overflow: auto;
         position: fixed;
-    background-image: url('../img/photos/pattern_h.png');
+   
 }
 body[data-sidebar-behavior=sticky] .sidebar-content[data-simplebar]{
     height:100vh;
@@ -12228,7 +12237,7 @@ body[data-theme=dark] .sidebar-link,body[data-theme=dark] a.sidebar-link{
     color:rgba(233,236,239,.5)
 }
 body[data-theme=light] .sidebar-link,body[data-theme=light] a.sidebar-link{
-    color:#000000
+    color:#f0f0f0
 }
 .sidebar-link i,.sidebar-link svg,a.sidebar-link i,a.sidebar-link svg{
    color:rgba(33,222,219,.5);
@@ -12475,11 +12484,11 @@ body[data-theme=dark] .badge-sidebar-secondary,body[data-theme=light] .badge-sid
     color:#fff
 }
 body:not([data-sidebar-position=right]) .sidebar.collapsed{
-    margin-left:-320px
+    margin-left:-300px
 }
 @media(min-width:1px)and (max-width:991.98px){
     body:not([data-sidebar-position=right]) .sidebar{
-        margin-left:-320px
+        margin-left:-300px
     }
     body:not([data-sidebar-position=right]) .sidebar.collapsed{
         margin-left:0
@@ -12489,11 +12498,11 @@ body:not([data-sidebar-position=right]) .sidebar-toggle{
     margin-right:1rem
 }
 body[data-sidebar-position=right] .sidebar.collapsed{
-    margin-right:-320px
+    margin-right:-300px
 }
 @media(min-width:1px)and (max-width:991.98px){
     body[data-sidebar-position=right] .sidebar{
-        margin-right:-320px
+        margin-right:-300px
     }
     body[data-sidebar-position=right] .sidebar.collapsed{
         margin-right:0

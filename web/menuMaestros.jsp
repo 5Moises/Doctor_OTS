@@ -19,8 +19,9 @@
         <div class="wrapper">
             <nav id="sidebar" class="sidebar">
                 <div class="sidebar-content js-simplebar">
-                    <a>
-                        <img src="img/logo.png" style="width: 300px; height:200px; padding: 10% 10% 10% 10%" alt="alt"/>
+                   <a class="sidebar-brand" href="index.html">
+                        <img src="img/logo.svg" height="100" width="100">
+                        <span class="align-middle me-3 white_bg" style="margin-left: -10px;">DOCTORWEB</span>
                     </a>
 
                     <ul class="sidebar-nav">

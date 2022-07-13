@@ -1136,7 +1136,7 @@ exists or setup the property manually. For example like this:
             -->
     <target depends="init,-init-cos,compile,compile-jsps,-do-compile-single-jsp,-pre-dist,-do-tmp-dist-with-manifest,-do-tmp-dist-without-manifest" description="Debug project in IDE." if="netbeans.home" name="debug">
         <nbstartserver debugmode="true"/>
-        <antcall target="connect-debugger"/>
+        
         <nbdeploy clientUrlPart="${client.urlPart}" debugmode="true" forceRedeploy="true"/>
         <antcall target="debug-display-browser-old"/>
         <antcall target="debug-display-browser"/>
@@ -1146,14 +1146,7 @@ exists or setup the property manually. For example like this:
         <condition property="listeningcp" value="sourcepath">
             <istrue value="${j2ee.compile.on.save}"/>
         </condition>
-        <nbjpdaconnect address="${jpda.address}" host="${jpda.host}" listeningcp="${listeningcp}" name="${name}" transport="${jpda.transport}">
-            <classpath>
-                <path path="${debug.classpath}:${j2ee.platform.classpath}"/>
-            </classpath>
-            <sourcepath>
-                <path path="${web.docbase.dir}"/>
-            </sourcepath>
-        </nbjpdaconnect>
+      
     </target>
     <target if="do.display.browser.debug.old" name="debug-display-browser-old">
         <nbbrowse url="${client.url}"/>
