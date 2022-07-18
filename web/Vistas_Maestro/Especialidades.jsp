@@ -74,6 +74,7 @@
         // Datatables clients
         $("#datatables-clients").DataTable({
             responsive: true,
+            lengthChange: !1,
             order: [
                 [1, "asc"]
             ]

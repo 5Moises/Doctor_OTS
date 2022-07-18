@@ -29,13 +29,14 @@
             <div class="col-xl-12">
                 <div class="card">           
                     <div class="card-body">        
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="col-md-12">
+                        <div class="row">                       
+
+                            <div class="col-md-3">
+                                <div class="col-12">
                                     <div class="mb-3">
                                         <div class="input-group-text btn-primary text-center">ESPECIALIDAD</div>   
                                         <div class="input-group">                                                   
-                                            <select class="form-control select2" data-toggle="select2" id="Especialidadtxt" name="Especialidadtxt" onchange="buscaMedico();"> 
+                                            <select class="form-control select2" data-toggle="select2"   style="width: 100%" id="Especialidadtxt" name="Especialidadtxt" onchange="buscaMedico();"> 
                                                 <option>SELECCIONAR ESPECIALIDAD</option>     
                                                 <%                                                while (IteradorServicios.hasNext()) {
                                                         ServicioDato = IteradorServicios.next();
@@ -52,8 +53,8 @@
                                     <div class="mb-3">
                                         <div class="input-group-text btn-primary text-center">MEDICOS</div>   
                                         <div class="input-group">                                                   
-                                            <select class="form-control select2" data-toggle="select2" id="Medicotxt" name="Medicotxt" >  
-                                                <option value="">SELECCIONAR MEDICO</option> 
+                                            <select class="form-control select2" data-toggle="select2" style="width: 100%"  id="Medicotxt" name="Medicotxt" >  
+                                                <option>SELECCIONAR MEDICO</option> 
                                             </select>
                                         </div>
                                     </div>  
@@ -77,7 +78,7 @@
                                     </div>  
                                 </div>        
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <div id='calendar'></div>                                
                             </div>
                             <div class="modal fade" id="Registro_Horario" tabindex="-1" role="dialog" aria-hidden="true">
@@ -90,49 +91,61 @@
                                         <div class="modal-body">
 
                                             <div class="card-body">
-                                                <form>
-                                                    <div class="row">
-                                                        <div class="col-md-9">                                                        
-                                                            <h4 class="form-label">MEDICO: Dr.   <span id="txtModalDoctor"></span></h4> 
 
-                                                        </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">                                                        
+                                                        <h5 class="form-label">MEDICO: Dr.   <span id="txtModalDoctor"></span></h5>                                                       
 
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <label class="form-label">DNI</label>       
-                                                            <div class="input-group">                                                                                                           
-                                                                <input class="form-control" type="text" id="txtModalDNI" />
-                                                                <button class="btn btn-secondary" type="button"><img style="width: 24px; height: 24px;" src="img/illustrations/Buscar.png" alt="Buscar"/></button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">PACIENTE</label>                                                    
-                                                                <input class="form-control" type="text" id="txtModalNombrePaciente" required/>
+                                                    <div class="col-md-4 text-end ">                                                        
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">HORA</label>
-                                                                <input class="form-control form-control-lg" type="time" id="txtModalHora" max="11:30:00" min="09:00:00" required />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="mb-3">
-                                                                <label class="form-label">DURACIÓN</label>
-                                                                <input class="form-control form-control-lg" type="text" id="Duraciontxt" readonly/>
-                                                            </div>
-                                                        </div>
-                                                    </div> 
-                                                    <div class="mb-3">
-                                                        <label class="form-label">DESCRIPCION</label>
-                                                        <textarea  class="form-control form-control-lg" id="idDescripcion"></textarea>
 
-                                                    </div>                                                        
-                                                    <button type="button" class="btn btn-primary">Actualizar Datos</button>    
-                                                </form>
+                                                        <h4 class="form-label">Consultorio:    <span id="txtConsultorio"></span></h4> 
+
+
+                                                    </div>
+
+
+                                                    <hr />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label class="form-label">DNI</label>       
+                                                        <div class="input-group">                                                                                                           
+                                                            <input class="form-control" type="text" id="txtModalDNI" />
+                                                            <button class="btn btn-secondary" type="button"><img style="width: 24px; height: 24px;" src="img/illustrations/Buscar.png" alt="Buscar"/></button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">PACIENTE</label>                                                               
+                                                            <input class="form-control" type="text" id="txtModalNombrePaciente" required/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">HORA DE ATENCIÓN</label>
+
+                                                            <select class="form-control"  id="ModalHoratxt">  
+                                                                <option>SELECCIONAR HORA</option> 
+                                                            </select>                                                      
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">DURACIÓN</label>
+                                                            <input class="form-control form-control-lg" type="text" id="ModalHDuraciontxt" readonly/>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="mb-3">
+                                                    <label class="form-label">DESCRIPCION</label>
+                                                    <textarea  class="form-control form-control-lg" id="ModalDescrip"></textarea>
+
+                                                </div>                                                        
+                                                <button type="submit" class="btn btn-primary" onclick="RegistraCita();">Guardar Cita</button>    
+
+
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -365,11 +378,12 @@
                 if (response !== "")
                 {
                     var datos = JSON.parse(response);
+                    
                     //$('#Duraciontxt').val(datos[1].Tiempo + "Minutos");
                     var aux = "[";
                     var aux2 = "]";
                     //Calendario
-
+                     $('#ModalHDuraciontxt').val( datos[1].Tiempo +  "Minutos");
                     var calendarEl = document.getElementById('calendar');
                     var initialLocaleCode = 'es';
                     for (var i = 0; i < datos.length; i++) {
@@ -396,33 +410,78 @@
                         navLinks: true, // can click day/week names to navigate views
                         selectable: true,
                         selectMirror: true,
-                        select: function () {
-                            //var title = prompt('Event Title:');                                 
-                            $('#Registro_Horario').modal('show');
-                            $(document).on('shown.bs.modal', '#Registro_Horario', function ()
-                            {
-                                var medico1 = document.getElementById("Medicotxt").value;
-                                //var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
-                                var texto = $("#Medicotxt").find('option:selected').text();
-                                $('#txtModalDNI').focus();
-                                document.getElementById('txtModalDoctor').innerHTML = texto;
+                        select: function () {                      
+                            //var title = prompt('Event Title:');           
+                            var medico1 = document.getElementById("Medicotxt").value;
+                            var fechacita = document.getElementById("Fechatxt").value;
+                            const fechaComoCadena = fechacita + " 23:37:22"; // día lunes
+                            const dias = [
+                                '7',
+                                '1',
+                                '2',
+                                '3',
+                                '4',
+                                '5',
+                                '6'
+                            ];
+                            const numeroDia = new Date(fechaComoCadena).getDay();
+                            const nombreDia = dias[numeroDia];
+                            console.log(nombreDia);
+                            $.post("fcitasServlet", {"medico1": medico1, "Fecha": nombreDia, "Consulta": "BuscarConsultorio"}, function (response) {
 
-                            });
+                              
+                                var dato1 = response;
+                                if (dato1 === "")
+                                {
+                                    alert("El medico no tiene Turno este Dia");
+                                } else
+                                {
+                                    document.getElementById('txtConsultorio').innerHTML = response;
+                                    $('#Registro_Horario').modal('show');
+                                    $(document).on('shown.bs.modal', '#Registro_Horario', function ()
+                                    {
+                                        //var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
+                                        var texto = $("#Medicotxt").find('option:selected').text();
+                                        $('#txtModalDNI').focus();
+                                        document.getElementById('txtModalDoctor').innerHTML = texto;                                        
+                                       
+                                    });
+
+                                }
+                            }),
+                                    function RegistraCita()
+                                    {
+                                        var txtModalDNI = document.getElementById("txtModalDNI").value;
+                                        var txtModalNombrePaciente = document.getElementById("txtModalNombrePaciente").value;
+                                        var txtModalHora = document.getElementById("ModalHoratxt").value;
+                                        var idDescripcion = document.getElementById("idDescripcion").value;
+
+
+                                        $.post("fcitasServlet", {"txtModalDNI": txtModalDNI, "txtModalNombrePaciente": txtModalNombrePaciente, "txtModalHora": txtModalHora, "idDescripcion": idDescripcion, "Consulta": "ResgistraCita"}, function () {
+
+                                            swal
+                                                    ({
+                                                        title: "Cita Registrado!",
+                                                        icon: "success",
+                                                        text: " ",
+                                                        buttons: [true],
+                                                        timer: 500
+                                                    })
+                                                    .then(() => {
+                                                        $("#Registro_Horario").modal('hide');
+                                                    });
+                                            
+                                        });
+
+                                    };
 
                             /* if (title) {
-                             calendar.addEvent({
-                             title: title,
-                             start: arg.start,
-                             end: arg.end,
-                             allDay: arg.allDay
-                             })
+                             
                              }*/
                             //    ,
                         },
                         eventClick: function (arg) {
-                            if (confirm('Are you sure you want to delete this event?')) {
-                                arg.event.remove();
-                            }
+                                alert("Modifica");
                         },
                         editable: true,
                         dayMaxEvents: true, // allow "more" link when too many events
@@ -440,6 +499,15 @@
 <!-- CALENDARIO PRINCIPAL -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+        $(".select2").each(function () {
+            $(this)
+
+                    .select2({
+                        placeholder: "ELEGIR",
+                        dropdownParent: $(this).parent()
+                    });
+        });
         var calendarEl = document.getElementById('calendar');
         var initialLocaleCode = 'es';
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -455,30 +523,7 @@
 </script>
 <!-- Registra CIta -->
 <script>
-    function RegistraCita()
-    {
-        var txtModalDNI = document.getElementById("txtModalDNI").value;
-        var txtModalNombrePaciente = document.getElementById("txtModalNombrePaciente").value;
-        var txtModalHora = document.getElementById("txtModalHora").value;
-        var idDescripcion = document.getElementById("idDescripcion").value;
 
-
-        $.post("fcitasServlet", {"txtModalDNI": txtModalDNI, "txtModalNombrePaciente": txtModalNombrePaciente, "txtModalHora": txtModalHora, "idDescripcion": idDescripcion, "Consulta": "ResgistraCita"}, function () {
-
-            swal
-                    ({
-                        title: "Cita Registrado!",
-                        icon: "success",
-                        text: " ",
-                        buttons: [true],
-                        timer: 500
-                    })
-                    .then(() => {
-                        $("#Registro_Horario").modal('hide');
-                    });
-        });
-
-    }
 </script>
 <!-- MODALDEUSUARIOS  -->  
 <script type="text/javascript">

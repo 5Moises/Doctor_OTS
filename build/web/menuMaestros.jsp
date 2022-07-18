@@ -86,13 +86,13 @@
                                     <a class="sidebar-link" href="menuMaestros.jsp?Seccion=19"><i class="fa-solid fa-people-group"></i><span>Promotores</span></a>
                                 </li>     
                                 <li>
-                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=20"><i class="fa-solid fa-mountain-sun"></i><span>Regiones</span></a>
+                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=20"><i class="fa-solid fa-mountain-sun"></i><span>Paises</span></a>
                                 </li>   
                                 <li>
                                     <a class="sidebar-link" href="menuMaestros.jsp?Seccion=21"><i class="fa-solid fa-print"></i><span>Impresoras</span></a>
                                 </li>    
                                 <li>
-                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=22"><i class="fa-solid fa-map"></i><span>Provincias</span></a>
+                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=22"><i class="fa-solid fa-map"></i><span>Ciudades</span></a>
                                 </li>                                       
                             </ul>
                         </li>
@@ -374,7 +374,7 @@
                     
             </div>
         </div> 
-        <%@include file="footer.jsp" %>>
+        <%@include file="footer.jsp" %>
     </body>
 
 

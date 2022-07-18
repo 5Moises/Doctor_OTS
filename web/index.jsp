@@ -32,15 +32,12 @@
                         <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=1"><i class="fa-solid fa-user-doctor yellow_color"></i><span class="align-middle">PROGRAMACIÓN DE TURNOS</span></a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=3"><i class="fa-solid fa-person-circle-plus brown_color"></i><span class="align-middle">ADMINISION</span></a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=4"><i class="fa-solid fa-house-medical-flag orange_color"></i><span class="align-middle">CONSULTA AMBULATORIA</span></a></li>                        
-                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=5"><i class="fa-solid fa-cash-register turquoise_color"></i><span class="align-middle">FLUJO DE CAJA</span></a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=6"><i class="fa-solid fa-handshake orange_color"></i><span class="align-middle">CUENTAS CORRIENTES</span></a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=7"><i class="fa-solid fa-chart-column"></i><span class="align-middle">DATAMINING</span></a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=5"><i class="fa-solid fa-cash-register turquoise_color"></i><span class="align-middle">FLUJO DE CAJA</span></a></li>                       
+                        <li class="sidebar-item"><a class="sidebar-link" href="index.jsp?Seccion=6"><i class="fa-solid fa-chart-column"></i><span class="align-middle">DATAMINING</span></a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="menuMaestros.jsp"><i class="fa-solid fa-gears red_color"></i><span class="align-middle">MANTENIMIENTO</span></a></li>
 
 
                     </ul>
-
-
 
                     <%
                         if (Seccion == null) {
@@ -61,11 +58,8 @@
                                 break;
                             case "5":
                                 PaginaSeccion = "Vistas_Principal/FlujoCaja.jsp";
-                                break;
+                                break;                           
                             case "6":
-                                PaginaSeccion = "Vistas_Principal/CuentasCorrientes.jsp";
-                                break;
-                            case "7":
                                 PaginaSeccion = "Vistas_Principal/DataMining.jsp";
                                 break;
                             default:

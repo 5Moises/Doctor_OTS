@@ -1794,8 +1794,8 @@ progress{
     appearance:none;
     background-clip:padding-box;
     background-color:#fff;
-    border:1px solid #ced4da;
-    border-radius:.2rem;
+    border: none;
+    border-bottom: 1px solid #91979E;    
     color:#495057;
     display:block;
     font-size:.825rem;
@@ -12175,9 +12175,7 @@ body[data-theme=dark] .settings-toggle-option:first-child{
 .settings-button-label:checked+.settings-button:after{
     opacity:1
 }
-.sidebar{
-    background-color: #3CA5F2;
-    background-image: url('../img/photos/pattern_h.png');
+.sidebar{    
     direction:ltr;
     max-width:300px;
     min-width:300px;

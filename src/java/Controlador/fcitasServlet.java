@@ -43,8 +43,7 @@ public class fcitasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            response.getWriter().write("]");
+       
     }
 
     @Override
@@ -55,18 +54,19 @@ public class fcitasServlet extends HttpServlet {
             String id_servicio;
             String Fecha;
             String Consulta = request.getParameter("Consulta");
+               DAOfcitas CitaConsulta = new DAOfcitas();
             switch (Consulta) {
                 case "ResgistraCita":
-                    id_Medico = request.getParameter("Id_medico");
-                    id_servicio = request.getParameter("id_servicio");
+                    System.out.println("");
+                    break;
+                case "BuscarConsultorio":
+                    id_Medico = request.getParameter("medico1");
                     Fecha = request.getParameter("Fecha");
-                    String doc = request.getParameter("txtModalDNI");
-                    String HoraA = request.getParameter("txtModalHora");
-                    String FechaA = request.getParameter("");
+                      response.getWriter().write(CitaConsulta.NConsultorio(Integer.parseInt(Fecha), Integer.parseInt( id_Medico)));
                     break;
                 case "ConsultaCita":
                     //Trae datos del jsp
-                    DAOfcitas CitaConsulta = new DAOfcitas();
+                 
                     id_Medico = request.getParameter("Id_medico");
                     id_servicio = request.getParameter("id_servicio");
                     Fecha = request.getParameter("Fecha");

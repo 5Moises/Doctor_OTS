@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,7 +51,7 @@ public class DAOfcitas {
     }
 
     public List VerCitas(fcitas datosCita, fmedicos DatoMed, fservicios DatosServicio) throws SQLException {
-        ArrayList<fcitas> DatosCita = new ArrayList<>();        
+        ArrayList<fcitas> DatosCita = new ArrayList<>();
         PreparedStatement ps;
         ps = Conexion.prepareStatement("SELECT\n"
                 + "    fpaciente.Nombre,\n"
@@ -83,11 +85,36 @@ public class DAOfcitas {
             citas.setFechaAtencion(rs.getString(5));
             citas.setObservaciones(rs.getString(6));
             citas.setTiempo(rs.getString(7));
-            citas.setHoraI(rs.getString(8));          
+            citas.setHoraI(rs.getString(8));
             citas.setHoraf(rs.getString(9));
             DatosCita.add(citas);
         }
         return DatosCita;
+    }
+
+    public String NConsultorio(int Dia, int id_med) {
+        String NombreConsultorio = "";
+        try {
+            PreparedStatement ps;
+            ps = Conexion.prepareStatement("SELECT\n"
+                    + "    fconsultorios.Descripcion\n"
+                    + "FROM\n"
+                    + "    turno\n"
+                    + "INNER JOIN fconsultorios ON turno.Id_Consultorios = fconsultorios.Id_Consultorios\n"
+                    + "INNER JOIN detalleturno ON turno.Id_Turno = detalleturno.Id_Turno\n"
+                    + "WHERE\n"
+                    + "    detalleturno.Id_Dias = ? AND turno.Id_Medico = ?");
+                ps.setInt(1, Dia);
+                 ps.setInt(2, id_med);
+                 rs = ps.executeQuery();
+                   while (rs.next()) {
+                   NombreConsultorio = (rs.getString(1));
+                   }
+                 
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOfcitas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return NombreConsultorio;
     }
 
     public boolean RegistrarCita(fcitas DatoCita) throws SQLException {
