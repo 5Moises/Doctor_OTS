@@ -76,4 +76,17 @@ public class DAOfmedicos {
         }    
     return DatosMedico ;
 }
+      public List MostrartipoP(int id_especialidad) throws SQLException {
+        ArrayList<fmedicos> DatosMedico = new ArrayList<>();       
+        PreparedStatement ps;
+        ps = Conexion.prepareStatement("SELECT *  from tipoprofecional");         
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            fmedicos Medicos = new fmedicos();
+            Medicos.setId_TipoPro(rs.getInt(1));           
+            Medicos.setDescripcion(rs.getString(2));        
+            DatosMedico.add(Medicos);
+        }    
+    return DatosMedico ;
+}
 }

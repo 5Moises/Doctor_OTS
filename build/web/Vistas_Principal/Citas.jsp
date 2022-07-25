@@ -378,12 +378,12 @@
                 if (response !== "")
                 {
                     var datos = JSON.parse(response);
-                    
+
                     //$('#Duraciontxt').val(datos[1].Tiempo + "Minutos");
                     var aux = "[";
                     var aux2 = "]";
                     //Calendario
-                     $('#ModalHDuraciontxt').val( datos[1].Tiempo +  "Minutos");
+                    // $('#ModalHDuraciontxt').val( datos[1].Tiempo +  "Minutos");
                     var calendarEl = document.getElementById('calendar');
                     var initialLocaleCode = 'es';
                     for (var i = 0; i < datos.length; i++) {
@@ -410,7 +410,7 @@
                         navLinks: true, // can click day/week names to navigate views
                         selectable: true,
                         selectMirror: true,
-                        select: function () {                      
+                        select: function () {
                             //var title = prompt('Event Title:');           
                             var medico1 = document.getElementById("Medicotxt").value;
                             var fechacita = document.getElementById("Fechatxt").value;
@@ -429,7 +429,7 @@
                             console.log(nombreDia);
                             $.post("fcitasServlet", {"medico1": medico1, "Fecha": nombreDia, "Consulta": "BuscarConsultorio"}, function (response) {
 
-                              
+
                                 var dato1 = response;
                                 if (dato1 === "")
                                 {
@@ -443,8 +443,8 @@
                                         //var id_Especialidad1 = document.getElementById("Especialidadtxt").value;
                                         var texto = $("#Medicotxt").find('option:selected').text();
                                         $('#txtModalDNI').focus();
-                                        document.getElementById('txtModalDoctor').innerHTML = texto;                                        
-                                       
+                                        document.getElementById('txtModalDoctor').innerHTML = texto;
+
                                     });
 
                                 }
@@ -470,7 +470,7 @@
                                                     .then(() => {
                                                         $("#Registro_Horario").modal('hide');
                                                     });
-                                            
+
                                         });
 
                                     };
@@ -481,7 +481,7 @@
                             //    ,
                         },
                         eventClick: function (arg) {
-                                alert("Modifica");
+                            alert("Modifica");
                         },
                         editable: true,
                         dayMaxEvents: true, // allow "more" link when too many events
