@@ -12,6 +12,10 @@
         <servlet-name>fcitasServlet</servlet-name>
         <servlet-class>Controlador.fcitasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>fpacientesServlet</servlet-name>
+        <servlet-class>Controlador.fpacienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>fturnoServlet</servlet-name>
         <url-pattern>/fturnoServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>fcitasServlet</servlet-name>
         <url-pattern>/fcitasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fpacientesServlet</servlet-name>
+        <url-pattern>/fpacientesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

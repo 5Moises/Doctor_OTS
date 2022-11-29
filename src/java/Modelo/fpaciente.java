@@ -11,7 +11,8 @@ package Modelo;
 public class fpaciente {
 
     private int Id_Paciente;
-    private String NroHistoria;
+    private String DOCI;
+    private String descripDoc;
     private String Nombre;
     private String Direccion;
     private String FechaNacimiento;
@@ -21,8 +22,10 @@ public class fpaciente {
      private String Pais; 
     private String Ciudad; 
     private String email;
+    private String Telefono;
     private int Id_Titular;
     private String NombreTitular;
+    private String DocTitular;
     private String Parentesco;
     private int Id_Ocupacion;
     private String Ocupacion;
@@ -30,7 +33,40 @@ public class fpaciente {
     private String EstadoCivil;
     private int Id_GradoIntruccion;
     private String GradoIntruccion;
+    private String FechaRegistro;
 
+    public String getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
+    }
+
+    public String getDescripDoc() {
+        return descripDoc;
+    }
+
+    public void setDescripDoc(String descripDoc) {
+        this.descripDoc = descripDoc;
+    }
+    
+    public String getFechaRegistro() {
+        return FechaRegistro;
+    }
+
+    public void setFechaRegistro(String FechaRegistro) {
+        this.FechaRegistro = FechaRegistro;
+    }    
+    
+    public String getDocTitular() {
+        return DocTitular;
+    }
+
+    public void setDocTitular(String DocTitular) {
+        this.DocTitular = DocTitular;
+    }
+    
     public String getPais() {
         return Pais;
     }
@@ -89,12 +125,12 @@ public class fpaciente {
         this.Id_Paciente = Id_Paciente;
     }
 
-    public String getNroHistoria() {
-        return NroHistoria;
+    public String getDOCI() {
+        return DOCI;
     }
 
-    public void setNroHistoria(String NroHistoria) {
-        this.NroHistoria = NroHistoria;
+    public void setDOCI(String DOCI) {
+        this.DOCI = DOCI;
     }
 
     public String getNombre() {

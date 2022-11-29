@@ -18,7 +18,17 @@ public class fmedicos {
     private String Telefono;
     private String Email;
     private String Descripcion;
+    private int id_TipoPro;
     private int Especialidad;
+
+    public int getId_TipoPro() {
+        return id_TipoPro;
+    }
+
+    public void setId_TipoPro(int id_TipoPro) {
+        this.id_TipoPro = id_TipoPro;
+    }
+    
 
     public int getEspecialidad() {
         return Especialidad;

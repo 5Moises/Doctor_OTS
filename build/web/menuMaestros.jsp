@@ -14,20 +14,14 @@
 %>
 <html>
 
-    <%@include file="header.jsp" %>
-    <style>
-        .sidebar-item{
-            font-size: 130%;         
-        }
-                
-
-    </style>
+    <%@include file="header.jsp" %>    
     <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-behavior="sticky" class="" onresize >
         <div class="wrapper">
             <nav id="sidebar" class="sidebar">
                 <div class="sidebar-content js-simplebar">
-                    <a>
-                        <img src="img/logo.png" style="width: 300px; height:200px; padding: 10% 10% 10% 10%" alt="alt"/>
+                   <a class="sidebar-brand" href="index.html">
+                        <img src="img/logo.svg" height="100" width="100">
+                        <span class="align-middle me-3 white_bg" style="margin-left: -10px;">DOCTORWEB</span>
                     </a>
 
                     <ul class="sidebar-nav">
@@ -92,13 +86,13 @@
                                     <a class="sidebar-link" href="menuMaestros.jsp?Seccion=19"><i class="fa-solid fa-people-group"></i><span>Promotores</span></a>
                                 </li>     
                                 <li>
-                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=20"><i class="fa-solid fa-mountain-sun"></i><span>Regiones</span></a>
+                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=20"><i class="fa-solid fa-mountain-sun"></i><span>Paises</span></a>
                                 </li>   
                                 <li>
                                     <a class="sidebar-link" href="menuMaestros.jsp?Seccion=21"><i class="fa-solid fa-print"></i><span>Impresoras</span></a>
                                 </li>    
                                 <li>
-                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=22"><i class="fa-solid fa-map"></i><span>Provincias</span></a>
+                                    <a class="sidebar-link" href="menuMaestros.jsp?Seccion=22"><i class="fa-solid fa-map"></i><span>Ciudades</span></a>
                                 </li>                                       
                             </ul>
                         </li>
@@ -380,7 +374,7 @@
                     
             </div>
         </div> 
-        <%@include file="footer.jsp" %>>
+        <%@include file="footer.jsp" %>
     </body>
 
 
