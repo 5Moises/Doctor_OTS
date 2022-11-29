@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_patient_details" model="ir.actions.report">
+        <field name="name">Reporte Personalizado</field>
+        <field name="model">clasea.demo</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">NuevoModulo.report_patient_detail</field>
+        <field name="report_file">NuevoModulo.report_patient_detail</field>
+        <field name="binding_model_id" ref="model_clasea_demo"/>
+        <field name="binding_type">report</field>
+    </record> 		
+
+     <record id="report_patient_xlsx" model="ir.actions.report">
+        <field name="name">Reporte Excel</field>
+        <field name="model">clasea.demo</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">NuevoModulo.report_patient_xlsx</field>
+        <field name="report_file">NuevoModulo.report_patient_xlsx</field>
+        <field name="binding_model_id" ref="model_clasea_demo"/>
+        <field name="binding_type">report</field>
+    </record> 		
+	
+    <record id="view_report_appointment_form" model="ir.ui.view">
+    <field name="name">REPORTE</field>
+    <field name="model">report.wizard</field>
+    <field name="arch" type="xml ">
+        <form string="Print Appointments">
+            <!--<group>
+                <group>
+                    <field name:"patient_id"/>
+                </group>
+                <group>
+                    <field name:"date_fron"/>
+                    <field name "date_to" />
+                </group>
+            </group>-->
+            <footer>
+                <button name="print_report" type="object" string="Print" class="btn-primary"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+
+<record id="action_report_appointment" model="ir.actions.act_window">
+    <field name="name">REPORTE_EXCEL</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">report.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_report_appointment_form"/>
+    <field name="target">new</field>
+</record>
+
+     <menuitem id='menu_prueba_report' 
+				  parent='NuevoModulo.menu_prueba_padre' 
+				  action="NuevoModulo.action_report_appointment"
+				  sequence="3" />
+</odoo>

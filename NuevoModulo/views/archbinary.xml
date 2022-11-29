@@ -1,0 +1,23 @@
+<odoo>
+	<data>
+		<record id="popup_veterinary" model="ir.ui.view">
+			<field name="name">
+				poput.form
+			</field>
+			<field name="model">
+				popup
+			</field>
+			<field name="arch" type="xml">
+				<form string="Archivo">
+					<field name="output_name" invisible="1" />
+					<div>
+						<p>
+							Este es el  arhivo generado:
+							<field name="outfield" readonly="1" filename="output_name" />
+						</p>
+					</div>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>
