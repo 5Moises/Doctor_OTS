@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Desarrollo2
+ * @author Moises
  */
 public class DAOfconsultorio {
     Connection Conexion = conexion.getConnection();
